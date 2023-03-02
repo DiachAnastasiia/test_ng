@@ -20,9 +20,16 @@ public class FirstCalculationTest implements TestingProcess, TestProcess {
     }
 
     @Parameters(value = "key")
-    @Test
+    @Test(expectedExceptions = AssertionError.class)
+    //@Test
     public void test(@Optional("123") String param) {
         System.out.println(param);
         Assert.fail();
+    }
+
+    @Test
+    public void testVariables() {
+        String url = System.getProperty("url", "www.google.com");
+        System.out.println(url);
     }
 }
